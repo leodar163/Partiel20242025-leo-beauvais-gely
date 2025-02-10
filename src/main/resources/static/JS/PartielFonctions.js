@@ -45,7 +45,10 @@ async function afficherPageCommande() {
 
     const pizzaTable = document.getElementById("pizza-table");
     pizzaTable.innerHTML = TableauPizza(pizzas);
-    console.log(TableauPizza(pizzas));
+
+    const commandeFooter =document.getElementById("commande-footer");
+    commandeFooter.innerHTML = SubmitButton();
+    
 }
 
 function CommandeHeader(numCommande, clients, livreurs) {
@@ -144,4 +147,10 @@ function RowPizza(pizza) {
             </th>
         </tr>
     `;
+}
+
+function SubmitButton() {
+    return `
+        <button>ajouter commande</button>
+    `
 }
