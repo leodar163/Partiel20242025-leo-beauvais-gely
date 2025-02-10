@@ -17,4 +17,9 @@ public class CommandeService
     {
         return commandeRepository.findAll().stream().max(Comparator.comparing(Commande::getId)).get().getId();
     }
+
+    public Commande AddCommande(Commande commande)
+    {
+        return commandeRepository.save(commande);
+    }
 }

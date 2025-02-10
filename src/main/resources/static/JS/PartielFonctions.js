@@ -147,24 +147,72 @@ function RowPizza(pizza) {
                 ${pizza.prix}€
             </th>
             <th>
-                <input type="range">
+                <input id="quantity-pizza-${pizza.id}" min="0" max="20" type="range">
             </th>
             <th>
-                quantite
+                %quantite%
             </th>
             <th>
-                total prix
+                %total prix%
             </th>
         </tr>
     `;
+}
+
+async function submitCommande() {
+    const responseCommandeNumber = await fetch("/commandes/number");
+
+    if (!responseCommandeNumber.ok) {
+        alert("impossible de récupérer le numéro de commandes." +
+            "\n inspectez la console pour plus d'informations");
+        console.error(await responseCommandeNumber.json());
+    }
+
+    const commandeNumber = await responseCommandeNumber.json();
+
+
+    const responsePizzas= await fetch("/pizzas");
+
+    if (!responsePizzas.ok) {
+        alert("impossible de récupérer les pizzas. " +
+            "\n inspectez la console pour plus d'informations");
+        console.error(await responsePizzas.json());
+    }
+
+    const pizzas= await responsePizzas.json();
+
+    const clientId = document.getElementById("client-select").value.trim();
+    const livreurId = document.getElementById("livreur-select").value.trim();
+    const content = pizzas.map(pizza => {
+        return {
+            pizzaId: pizza.id,
+            quantity: document.getElementById(`quantity-pizza-${pizza.id}`).value
+        }
+    })
+
+    const reponseCommande = await fetch('commandes/new', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: commandeNumber + 1,
+            clientId: clientId,
+            livreurId: livreurId,
+            content: content
+        })
+    })
+
+    if (!reponseCommande.ok) {
+        console.error(await reponseCommande.json());
+        return;
+    }
+
+    window.location.reload();
 }
 
 function SubmitButton() {
     return `
         <button onclick="submitCommande()">ajouter commande</button>
     `
-}
-
-function submitCommande() {
-    
 }

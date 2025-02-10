@@ -17,4 +17,9 @@ public class PizzaService
     {
         return pizzaRepository.findAll();
     }
+
+    public Pizza GetOnePizza(String id)
+    {
+        return pizzaRepository.findById(id).orElse(null);
+    }
 }

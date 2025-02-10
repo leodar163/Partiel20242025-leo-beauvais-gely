@@ -53,4 +53,9 @@ public class Lignescommande {
         this.quantite = qte;
     }
 
+    public Lignescommande(Commande commande, Pizza pizza)
+    {
+        this.commande = commande;
+        this.pizza = pizza;
+    }
 }
