@@ -13,7 +13,7 @@ public class Livreur {
     private Integer id;
 
     @Column(name = "nomLiv", nullable = false, length = 20)
-    private String nomLiv;
+    private String nom;
 
     public Integer getId() {
         return id;
@@ -23,12 +23,12 @@ public class Livreur {
         this.id = id;
     }
 
-    public String getNomLiv() {
-        return nomLiv;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomLiv(String nomLiv) {
-        this.nomLiv = nomLiv;
+    public void setNom(String nomLiv) {
+        this.nom = nomLiv;
     }
 
 }

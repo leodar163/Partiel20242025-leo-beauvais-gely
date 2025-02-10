@@ -11,11 +11,11 @@ public class Commande {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "numCli", nullable = false)
-    private Client numCli;
+    private Client client;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "numLiv", nullable = false)
-    private Livreur numLiv;
+    private Livreur livreur;
 
     public Integer getId() {
         return id;
@@ -25,20 +25,20 @@ public class Commande {
         this.id = id;
     }
 
-    public Client getNumCli() {
-        return numCli;
+    public Client getClient() {
+        return client;
     }
 
-    public void setNumCli(Client numCli) {
-        this.numCli = numCli;
+    public void setClient(Client numCli) {
+        this.client = numCli;
     }
 
-    public Livreur getNumLiv() {
-        return numLiv;
+    public Livreur getLivreur() {
+        return livreur;
     }
 
-    public void setNumLiv(Livreur numLiv) {
-        this.numLiv = numLiv;
+    public void setLivreur(Livreur numLiv) {
+        this.livreur = numLiv;
     }
 
 }
