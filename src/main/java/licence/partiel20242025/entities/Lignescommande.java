@@ -11,15 +11,15 @@ public class Lignescommande {
     @MapsId("refCde")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "refCde", nullable = false)
-    private Commande refCde;
+    private Commande commande;
 
     @MapsId("refPizza")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "refPizza", nullable = false)
-    private Pizza refPizza;
+    private Pizza pizza;
 
     @Column(name = "qte", nullable = false)
-    private Integer qte;
+    private Integer quantite;
 
     public LignescommandeId getId() {
         return id;
@@ -29,28 +29,28 @@ public class Lignescommande {
         this.id = id;
     }
 
-    public Commande getRefCde() {
-        return refCde;
+    public Commande getCommande() {
+        return commande;
     }
 
-    public void setRefCde(Commande refCde) {
-        this.refCde = refCde;
+    public void setCommande(Commande refCde) {
+        this.commande = refCde;
     }
 
-    public Pizza getRefPizza() {
-        return refPizza;
+    public Pizza getPizza() {
+        return pizza;
     }
 
-    public void setRefPizza(Pizza refPizza) {
-        this.refPizza = refPizza;
+    public void setPizza(Pizza refPizza) {
+        this.pizza = refPizza;
     }
 
-    public Integer getQte() {
-        return qte;
+    public Integer getQuantite() {
+        return quantite;
     }
 
-    public void setQte(Integer qte) {
-        this.qte = qte;
+    public void setQuantite(Integer qte) {
+        this.quantite = qte;
     }
 
 }

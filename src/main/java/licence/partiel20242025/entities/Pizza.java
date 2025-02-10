@@ -10,10 +10,10 @@ import jakarta.persistence.Table;
 public class Pizza {
     @Id
     @Column(name = "numPiz", nullable = false, length = 4)
-    private String numPiz;
+    private String numero;
 
     @Column(name = "nomPiz", nullable = false, length = 20)
-    private String nomPiz;
+    private String nom;
 
     @Column(name = "nbPers", nullable = false)
     private Integer nbPers;
@@ -21,20 +21,20 @@ public class Pizza {
     @Column(name = "prix", nullable = false)
     private Integer prix;
 
-    public String getNumPiz() {
-        return numPiz;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setNumPiz(String numPiz) {
-        this.numPiz = numPiz;
+    public void setNumero(String numPiz) {
+        this.numero = numPiz;
     }
 
-    public String getNomPiz() {
-        return nomPiz;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomPiz(String nomPiz) {
-        this.nomPiz = nomPiz;
+    public void setNom(String nomPiz) {
+        this.nom = nomPiz;
     }
 
     public Integer getNbPers() {

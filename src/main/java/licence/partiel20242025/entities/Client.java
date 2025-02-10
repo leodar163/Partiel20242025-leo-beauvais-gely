@@ -13,7 +13,7 @@ public class Client {
     private Integer id;
 
     @Column(name = "nomCli", nullable = false, length = 20)
-    private String nomCli;
+    private String nom;
 
     public Integer getId() {
         return id;
@@ -23,12 +23,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getNomCli() {
-        return nomCli;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomCli(String nomCli) {
-        this.nomCli = nomCli;
+    public void setNom(String nomCli) {
+        this.nom = nomCli;
     }
 
 }
