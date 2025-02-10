@@ -3,8 +3,8 @@ package licence.partiel20242025.controllers;
 import licence.partiel20242025.entities.Client;
 import licence.partiel20242025.entities.Livreur;
 import licence.partiel20242025.entities.Pizza;
-import licence.partiel20242025.repositories.PizzaRepository;
 import licence.partiel20242025.services.ClientService;
+import licence.partiel20242025.services.CommandeService;
 import licence.partiel20242025.services.LivreurService;
 import licence.partiel20242025.services.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,8 @@ public class PizzeriaController
     private ClientService clientService;
     @Autowired
     private LivreurService livreurService;
+    @Autowired
+    private CommandeService commandeService;
 
     @GetMapping("/pizzas")
     @ResponseBody
@@ -63,6 +65,21 @@ public class PizzeriaController
         {
             List<Livreur> livreurs = livreurService.GetAllLivreurs();
             return new ResponseEntity<>(livreurs, HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/commandes/number")
+    @ResponseBody
+    public ResponseEntity<?> GetCommandeNumber()
+    {
+        try
+        {
+            Integer commandeNumber = commandeService.GetCommandeNumber();
+            return new ResponseEntity<>(commandeNumber, HttpStatus.OK);
         }
         catch (Exception e)
         {

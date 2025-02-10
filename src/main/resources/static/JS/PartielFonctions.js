@@ -39,9 +39,20 @@ async function afficherPageCommande() {
     const pizzas= await responsePizzas.json();
 
 
+    //Commande number
+    const responseCommandeNumber = await fetch("/commandes/number");
+
+    if (!responseCommandeNumber.ok) {
+        alert("impossible de récupérer le numéro de commandes." +
+            "\n inspectez la console pour plus d'informations");
+        console.error(await responseCommandeNumber.json());
+    }
+
+    const commandeNumber = await responseCommandeNumber.json();
+
     //Rendu
     const commandeHeader =document.getElementById("commande-header");
-    commandeHeader.innerHTML = CommandeHeader(0, clients, livreurs);
+    commandeHeader.innerHTML = CommandeHeader(commandeNumber, clients, livreurs);
 
     const pizzaTable = document.getElementById("pizza-table");
     pizzaTable.innerHTML = TableauPizza(pizzas);
@@ -55,7 +66,7 @@ function CommandeHeader(numCommande, clients, livreurs) {
         <div>
             <div>
                 <label>Numéro commande</label>
-                <div>${numCommande}</div>
+                <div>${numCommande + 1}</div>
             </div>
             <div>
                 <label>Clients</label>
@@ -150,6 +161,10 @@ function RowPizza(pizza) {
 
 function SubmitButton() {
     return `
-        <button>ajouter commande</button>
+        <button onclick="submitCommande()">ajouter commande</button>
     `
+}
+
+function submitCommande() {
+    
 }
