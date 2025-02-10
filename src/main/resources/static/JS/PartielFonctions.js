@@ -48,7 +48,6 @@ async function afficherPageCommande() {
 
     const commandeFooter =document.getElementById("commande-footer");
     commandeFooter.innerHTML = SubmitButton();
-    
 }
 
 function CommandeHeader(numCommande, clients, livreurs) {
